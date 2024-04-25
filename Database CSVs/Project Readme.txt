@@ -1,6 +1,6 @@
 README
 
-The database backup is inside of the database CSV files as you can just restore this backup and run it, however, if it is missing data, please restore the data using the commands below. 
+The database backup is inside of the database CSV files as you can just restore this backup and run it, however, if it is missing data, please restore the data using the commands below. Users are to input 
 
 
 Command to copy over directors.csv. keep them in chronological order as order matters. 

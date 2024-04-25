@@ -91,7 +91,22 @@ def subqueries():
     table = input("Enter the table name for the outer query: ")
     outer_condition = input("Enter the condition for the outer query (e.g., 'id IN'): ")
     subquery_table = input("Enter the table name for the subquery: ")
-    subquery_condition = input("Enter the condition for the subquery: ")
+    
+    condition_type = input("Enter the type of condition for the subquery (1: any record, 2: specific criteria, 3: join with another table): ")
+
+    if condition_type == '1':
+        subquery_condition = "1=1"
+    elif condition_type == '2':
+        specific_criteria = input("Enter the specific criteria for the subquery (e.g., 'genre = Action'): ")
+        subquery_condition = specific_criteria
+    elif condition_type == '3':
+        join_table = input("Enter the name of the table to join with (e.g., 'genres'): ")
+        join_condition = input("Enter the condition for the join (e.g., 'movies.genre_id = genres.id'): ")
+        subquery_condition = f"{subquery_table}.{join_condition} AND {join_table}.{specific_criteria}"
+    else:
+        print("Invalid condition type.")
+        return
+    
     sql_command = f"SELECT * FROM {table} WHERE {outer_condition} AND EXISTS (SELECT 1 FROM {subquery_table} WHERE {subquery_condition});"
     run_sql_command(sql_command)
 
