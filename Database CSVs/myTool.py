@@ -92,7 +92,7 @@ def subqueries():
     outer_condition = input("Enter the condition for the outer query (e.g., 'id IN'): ")
     subquery_table = input("Enter the table name for the subquery: ")
     subquery_condition = input("Enter the condition for the subquery: ")
-    sql_command = f"SELECT * FROM {table} WHERE {outer_condition} (SELECT id FROM {subquery_table} WHERE {subquery_condition});"
+    sql_command = f"SELECT * FROM {table} WHERE {outer_condition} AND id IN (SELECT id FROM {subquery_table} WHERE {subquery_condition});"
     run_sql_command(sql_command)
 
 def transactions():
